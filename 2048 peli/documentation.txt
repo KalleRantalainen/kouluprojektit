@@ -1,0 +1,133 @@
+INSTRUCTIONS FOR PLAYING THE GAME:
+
+Player can choose seed at the start of the game or after
+resetting the game. Seed value affects where the first
+tiles are placed. If the seed is left empty, then uses
+seed 1. Player can also choose goal for the game at the 
+start of the game or after reseting previous game. Goal
+has to be given as power of two and from range 2-30.
+Default goal is 2¹² which is 2048. If the goal is left
+empty, then this default goal is used. After choosing 
+goal and seed, player has to press start button, so that
+the game starts.
+The idea of the game is to move the tiles on the gameboard
+(default size 4x4) and get one tile's value to be equal
+to the goal. So if goal is 2048 and one tile on the 
+gameboard has value 2048, then the player has won the game.
+At the start of the game every randomly placed tile has
+value 2. After every move new tile with value 2 is randomly
+placed on the gameboard if there is empty tile after moving
+them. If two tiles which have the same value are next to
+each other and the tiles are moved in some direction so that
+they would overlap, then the tiles merge and the new value of
+this merged tile is the sum of previous tiles. So if there
+is tile with value two in the upper right corner and below 
+that is tile with value two and player moves the tiles up,
+then they merge into one tile and new value is 4. If the
+gameboard fills so that no tiles can merge the player 
+loses. 
+Player can reset the gameboard after losing or winning or
+when the game is running. After pressing reset button player
+can choose new seed and goal values and start the game again
+with the press of a start button.
+Player can also monitor progress with score that is updated 
+on the game window. Score is the sum of all merged tiles. For
+example if 2,2 and 4,4 tiles merge then the total score is 4+8=12.
+Score is zeroed when player hits the reset button. If the player
+wins or loses, the score is displayed on the screen as long as
+player presses reset button. Timer is also displayed next to 
+the score, so the player can watch how long he/she has played.
+Timer is also zeroed after pressing reset and stopped after
+winning or losing.
+If the player gets hungry while playing, s/he can pause the game.
+When paused, the tiles cannot be moved and the timer is stopped.
+When pause button is pressed, the text of the same button
+changes to resume, and the game can be continued by pressing
+resume button. After continuing the game the timer starts again and
+tiles can be moved.
+Player can quit the game by pressing quit button or by pressing
+the X button on the top right corner of the screen.
+
+
+DESING OF THE PROGRAM:
+
+At the start of the game the program asks for seed and goal.
+The player doesn't have to give seed or goal, the program can
+use defaults. 
+
+Game only starts after pressing start button. Before pressing
+start button the move buttons, pause button and reset button
+are disabled. 
+
+After pressing the start button, the seed and goal inputs are
+disabled so they cannot be changed during the game. Moving
+buttons are enabled and so are the reset and pause buttons.
+The timer also starts instantly after start button is pressed.
+The start button is disabled after pressing the start button,
+so the game have to be reseted via reset button before starting
+new game.
+
+After pressing any of the move button the program moves the
+tiles instantly to the gameboard border where the move button
+was pointing and new tile is generated if possible. If the
+tiles cannot be moved to the direction that the user wanted
+them to move, press of a move button doesn't do anything.
+
+Pressing pause button causes the timer to stop and the move
+buttons and reset button to be disabled. PAUSED text also
+appears on the window. The text of the pause button changes
+to "resume" after pressing it if the game was not paused.
+If the game is paused and the resume button is pressed, then
+the button text changes back to "pause" and the timer starts,
+from the time it was left before pressing pause,
+move buttons are enabled and reset button is enabled.
+
+Pressing reset button results to gameboard being cleared,
+and opaque white rectangle displayed over the gameboard,
+so the user understands that s/he has to press start or
+choose seed and/or goal and press start to start the game
+again.
+
+When quit button or x button is pressed, the program stops.
+
+If the player wins "You win" text appears on the screen and
+the gameboard changes green. If the player loses, "You lose"
+text appears on the screen and the gameboard turns red.
+
+Number that represents the tile value is displayed on the
+center of the tile and changed if the tile merges with 
+another tile. If the tile has value 0, it's empty and
+the value is not displayed. Tiles that have different value
+have also different colors. However avery tile that has
+value over 2048 are the same color.
+
+The game calculates score as the sum of every merged tile 
+value that player has managed to merge during the game.
+
+The game checks if the given goal is valid. Goal cannot
+be 2 because player would won at the beginning of the 
+game. Player give the goal as exponent of two, for example
+12, and the program calculates that the goal is then
+2¹²=2048.
+
+The game can be played with different grid sizes by changing
+const int SIZE in the gameboard.hh file. Playable sizes
+are for example 3, 4 and 5 (3x3, 4x4, 5x5) default size
+being 4. Changing size affects in the amount of tiles, not
+the side length of the gameboard.
+
+OTHER NOTES:
+Some of the code of this project was implemented by the 
+prgramming 2 course staff. At the start of every file that
+was done mainly by course staff there is a notification of that.
+Files that i implemented entirely are mainwindow.cpp and the
+header file of that.
+
+
+
+
+
+
+
+
+
